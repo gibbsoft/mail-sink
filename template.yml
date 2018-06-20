@@ -85,7 +85,8 @@ objects:
         dnsPolicy: ClusterFirst
         restartPolicy: Always
         schedulerName: default-scheduler
-        securityContext: {}
+        securityContext:
+          runAsUser: 1001
         terminationGracePeriodSeconds: 30
     triggers:
     - imageChangeParams:
