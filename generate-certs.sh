@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 echo 3
 # Specify where we will install
 # the xip.io certificate
