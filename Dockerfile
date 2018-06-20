@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends postfix courier-base sqwebmail courier-imap sudo && \
 	rm -fr /var/lib/apt/lists/*
 
-RUN useradd -ms /bin/bash -p PcdO6g4gV662A -u 1000080000 smtp
+RUN useradd -ms /bin/bash -p PcdO6g4gV662A smtp
 RUN adduser smtp sudo
 RUN  echo  "%sudo    ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers
 
