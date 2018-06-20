@@ -49,6 +49,7 @@ RUN chmod +x /home/smtp/start.sh
 RUN chmod -R 777 /var/run/courier/authdaemon
 RUN chmod -R 777 /var/run/courier
 RUN chmod -R 777 /var/run/apache2
+RUN chmod -R 777 /var/log/apache2
 USER smtp
 
 CMD ["./start.sh"]
