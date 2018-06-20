@@ -37,6 +37,9 @@ ADD generate-certs.sh /home/smtp/
 ADD imap-start.sh /home/smtp/
 ADD webmail-start.sh /home/smtp/
 ADD start.sh /home/smtp/
+ADD ssl/example.crt /etc/apache2/ssl/
+ADD ssl/example.csr /etc/apache2/ssl/
+ADD ssl/example.key /etc/apache2/ssl/
 
 USER root
 RUN chmod +x /home/smtp/generate-certs.sh
