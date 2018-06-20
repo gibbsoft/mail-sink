@@ -43,7 +43,7 @@ RUN chmod +x /home/smtp/generate-certs.sh
 RUN chmod +x /home/smtp/imap-start.sh
 RUN chmod +x /home/smtp/webmail-start.sh
 RUN chmod +x /home/smtp/start.sh
-RUN chmod -R 777 /
+#RUN chmod -R 777 /
 USER smtp
 
 CMD ["./start.sh"]
