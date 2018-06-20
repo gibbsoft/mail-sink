@@ -3,8 +3,8 @@
 echo 3
 # Specify where we will install
 # the xip.io certificate
-SSL_DIR="/etc/apache2/ssl/"
 
+SSL_DIR="/etc/apache2/ssl/"
 # Set the wildcarded domain
 # we want to use
 DOMAIN="${FQDN}"

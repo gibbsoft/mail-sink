@@ -74,6 +74,15 @@ objects:
         - image: ' '
           imagePullPolicy: IfNotPresent
           name: ${APPLICATION_NAME}
+          ports:
+          - containerPort: 8025
+            protocol: TCP
+          - containerPort: 4443
+            protocol: TCP
+          - containerPort: 8143
+            protocol: TCP
+          - containerPort: 8080
+            protocol: TCP
           env:
           - name: FQDN
             value: ${FQDN}
