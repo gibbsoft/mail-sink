@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo 3
 # Specify where we will install
 # the xip.io certificate
 SSL_DIR="/etc/apache2/ssl/"
@@ -28,5 +29,7 @@ sudo mkdir -p "$SSL_DIR"
 
 # Generate our Private Key, CSR and Certificate
 sudo openssl genrsa -out "$SSL_DIR/example.key" 2048
+echo 4
 sudo openssl req -new -subj "$(echo -n "$SUBJ" | tr "\n" "/")" -key "$SSL_DIR/example.key" -out "$SSL_DIR/example.csr" -passin pass:$PASSPHRASE
+echo 5
 sudo openssl x509 -req -days 365 -in "$SSL_DIR/example.csr" -signkey "$SSL_DIR/example.key" -out "$SSL_DIR/example.crt"
