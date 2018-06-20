@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IP=192.168.99.100
+IP=192.168.99.101
 USER=developer
 PROJECT=mail
 
