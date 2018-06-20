@@ -9,7 +9,9 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends postfix courier-base sqwebmail courier-imap sudo && \
 	rm -fr /var/lib/apt/lists/*
 
-RUN useradd -ms /bin/bash -p PcdO6g4gV662A -u 1001 smtp
+#RUN useradd -ms /bin/bash -p PcdO6g4gV662A -u 1001 smtp
+RUN useradd -u 1001 -m smtp && echo "smtp:smtp" | chpasswd && adduser docker sudo
+
 RUN  echo  "smtp    ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers
 
 USER smtp
