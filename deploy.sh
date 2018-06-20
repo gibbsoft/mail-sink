@@ -1,7 +1,7 @@
 #!/bin/bash
 
-IP=192.168.99.101
-USER=developer
+IP=ocp.datr.eu
+USER=justin
 PROJECT=mail
 
 oc login https://${IP}:8443 -u $USER
