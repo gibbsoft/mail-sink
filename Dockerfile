@@ -10,7 +10,7 @@ RUN apt-get update && \
 	rm -fr /var/lib/apt/lists/*
 
 RUN useradd -ms /bin/bash -p PcdO6g4gV662A -u 1001 smtp
-# RUN  echo  "smtp    ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+RUN  echo  "smtp    ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers
 
 USER smtp
 # enable cgi scripts
