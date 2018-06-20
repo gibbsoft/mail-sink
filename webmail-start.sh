@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-#./generate-certs.sh
+./generate-certs.sh
 
 . /etc/apache2/envvars
 

@@ -74,6 +74,9 @@ objects:
         - image: ' '
           imagePullPolicy: IfNotPresent
           name: ${APPLICATION_NAME}
+          env:
+          - name: FQDN
+            value: ${FQDN}
           resources:
             limits:
               memory: ${MEMORY_LIMIT}
@@ -103,13 +106,30 @@ objects:
   metadata:
     labels:
       app: ${APPLICATION_NAME}
-    name: mail-sink-web
+    name: mail-sink-web-sec
   spec:
     ports:
-    - name: agent
+    - name: https
       port: 4443
       protocol: TCP
       targetPort: 4443
+    selector:
+      name: ${APPLICATION_NAME}
+    sessionAffinity: None
+    type: ClusterIP
+
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: ${APPLICATION_NAME}
+    name: mail-sink-web
+  spec:
+    ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
     selector:
       name: ${APPLICATION_NAME}
     sessionAffinity: None
@@ -128,7 +148,7 @@ objects:
       termination: edge
     to:
       kind: Service
-      name: ${APPLICATION_NAME}
+      name: mail-sink-web
       weight: 100
     wildcardPolicy: None
 
@@ -158,3 +178,6 @@ parameters:
 - name: MEMORY_LIMIT
   description: Heap for JVM
   value: "1Gi"
+- name: FQDN
+  description: full qualified domain name
+  value: "mail-sink-web-sec-mail.apps.ocp.datr.eu"
