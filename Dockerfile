@@ -50,6 +50,8 @@ RUN chmod -R 777 /var/run/courier/authdaemon
 RUN chmod -R 777 /var/run/courier
 RUN chmod -R 777 /var/run/apache2
 RUN chmod -R 777 /var/log/apache2
+RUN chmod 777 /usr/sbin/authdaemond
+RUN chmod 777 /etc/courier/authdaemonrc
 USER smtp
 
 CMD ["./start.sh"]
