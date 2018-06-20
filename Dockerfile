@@ -6,7 +6,7 @@ ENV FQDN localhost
 RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends net-tools postfix courier-base sqwebmail courier-imap sudo && \
+    apt-get install -y --no-install-recommends net-tools vim postfix courier-base sqwebmail courier-imap sudo && \
 	rm -fr /var/lib/apt/lists/*
 
 RUN useradd -ms /bin/bash -p PcdO6g4gV662A -u 1001 smtp
