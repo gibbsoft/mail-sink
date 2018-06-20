@@ -9,8 +9,8 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends postfix courier-base sqwebmail courier-imap sudo && \
 	rm -fr /var/lib/apt/lists/*
 
-RUN useradd -ms /bin/bash -p PcdO6g4gV662A smtp
-RUN  echo  "smtp    ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+RUN useradd -ms /bin/bash -p PcdO6g4gV662A -u 1001 smtp
+# RUN  echo  "smtp    ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers
 
 USER smtp
 # enable cgi scripts
@@ -45,4 +45,4 @@ RUN chmod +x /home/smtp/webmail-start.sh
 RUN chmod +x /home/smtp/start.sh
 USER smtp
 
-CMD ["sudo", "./start.sh"]
+CMD ["./start.sh"]

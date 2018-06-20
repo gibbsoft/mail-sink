@@ -41,11 +41,6 @@ objects:
     strategy:
       dockerStrategy:
         dockerfilePath: ${DOCKERFILE_NAME}
-        env:
-          - name: "JENKINS_VERSION"
-            value: "${JENKINS_VERSION}"
-          - name: "DOCKERFILE_PATH"
-            value: "${DOCKERFILE_PATH}"
     output:
       to:
         kind: "ImageStreamTag"
@@ -76,18 +71,8 @@ objects:
           name: ${APPLICATION_NAME}
       spec:
         containers:
-          image: ' '
+        - image: ' '
           imagePullPolicy: IfNotPresent
-          livenessProbe:
-            failureThreshold: 30
-            httpGet:
-              path: /login
-              port: 8080
-              scheme: HTTP
-            initialDelaySeconds: 420
-            periodSeconds: 10
-            successThreshold: 1
-            timeoutSeconds: 3
           name: ${APPLICATION_NAME}
           resources:
             limits:
@@ -101,8 +86,6 @@ objects:
         restartPolicy: Always
         schedulerName: default-scheduler
         securityContext: {}
-        serviceAccount: jenkins
-        serviceAccountName: jenkins
         terminationGracePeriodSeconds: 30
     triggers:
     - imageChangeParams:
@@ -156,7 +139,7 @@ parameters:
   value: mail-sink
 - description: Git source URI for application
   name: SOURCE_REPOSITORY_URL
-  value: "https://github.com/justindav1s/ocp-appdev.git"
+  value: "https://github.com/justindav1s/mail-sink.git"
   required: true
 - description: Git branch/tag reference
   name: SOURCE_REPOSITORY_REF
