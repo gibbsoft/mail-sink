@@ -133,23 +133,6 @@ objects:
     type: ClusterIP
 
 - apiVersion: v1
-  kind: Service
-  metadata:
-    labels:
-      app: ${APPLICATION_NAME}
-    name: mail-sink-web
-  spec:
-    ports:
-    - name: http
-      port: 8080
-      protocol: TCP
-      targetPort: 8080
-    selector:
-      name: ${APPLICATION_NAME}
-    sessionAffinity: None
-    type: ClusterIP
-
-- apiVersion: v1
   kind: Route
   metadata:
     annotations:
@@ -162,7 +145,7 @@ objects:
       termination: edge
     to:
       kind: Service
-      name: mail-sink-web
+      name: mail-sink-web-sec
       weight: 100
     wildcardPolicy: None
 
