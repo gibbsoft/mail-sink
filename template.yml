@@ -5,6 +5,14 @@ metadata:
 objects:
 
 - apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    annotations:
+    labels:
+      app: ${APPLICATION_NAME}
+    name: ${APPLICATION_NAME}
+
+- apiVersion: v1
   kind: ImageStream
   metadata:
     labels:

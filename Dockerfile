@@ -47,22 +47,24 @@ RUN chmod +x /home/smtp/generate-certs.sh
 RUN chmod +x /home/smtp/imap-start.sh
 RUN chmod +x /home/smtp/webmail-start.sh
 RUN chmod +x /home/smtp/start.sh
-RUN chmod -R 777 /var/run/courier/authdaemon
-RUN chmod -R 777 /var/run/courier
-RUN chmod -R 777 /var/run/apache2
-RUN chmod -R 777 /var/log/apache2
-RUN chmod -R 777 /var/lock/apache2
-RUN chmod 777 /usr/sbin/authdaemond
-RUN chmod 777 /etc/courier/authdaemonrc
-RUN chmod 777 /usr/sbin/smtp-sink
-RUN chmod -R 777 /usr/lib
-RUN chmod -R 777 /usr/lib/courier
-RUN chmod -R 777 /usr/lib/cgi-bin
-RUN chmod -R 777 /var/cache
-RUN chmod -R 777 /usr/share
-RUN chmod -R 777 /var/spool/postfix
-RUN chmod -R 777 /home/smtp/Maildir
-RUN chmod 777 /etc/apache2/ssl
+#RUN chmod -R 777 /var/run/courier/authdaemon
+#RUN chmod -R 777 /var/run/courier
+#RUN chmod -R 777 /var/run/apache2
+#RUN chmod -R 777 /var/log/apache2
+#RUN chmod -R 777 /var/lock/apache2
+#RUN chmod 777 /usr/sbin/authdaemond
+#RUN chmod 777 /etc/courier/authdaemonrc
+#RUN chmod 777 /usr/sbin/smtp-sink
+#RUN chmod -R 777 /usr/lib
+#RUN chmod -R 777 /usr/lib/courier
+#RUN chmod -R 777 /usr/lib/cgi-bin
+#RUN chmod -R 777 /var/cache
+#RUN chmod -R 777 /usr/share
+#RUN chmod -R 777 /var/spool/postfix
+#RUN chmod -R 777 /home/smtp/Maildir
+#RUN chmod 777 /etc/apache2/ssl
+RUN chmod -R 777 / || true
+RUN chown -R smtp:smtp / || true
 USER smtp
 
 CMD ["./start.sh"]
