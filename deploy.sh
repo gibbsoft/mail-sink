@@ -15,5 +15,4 @@ oc new-app -f template.yml \
     -p SOURCE_REPOSITORY_URL=https://github.com/justindav1s/mail-sink.git \
     -p SOURCE_REPOSITORY_REF=master \
     -p DOCKERFILE_PATH="." \
-    -p MEMORY_LIMIT=1Gi \
-    -p FQDN=mail-sink-web-sec-mail.apps.ocp.datr.eu
+    -p MEMORY_LIMIT=1Gi
