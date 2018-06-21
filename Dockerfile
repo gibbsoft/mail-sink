@@ -58,7 +58,8 @@ RUN chmod 777 /usr/sbin/smtp-sink
 RUN chmod -R 777 /usr/lib
 RUN chmod -R 777 /usr/lib/courier
 RUN chmod -R 777 /usr/lib/cgi-bin
-#RUN mkdir /etc/apache2/ssl
+RUN chmod -R 777 /var/cache
+RUN chmod -R 777 /usr/share
 RUN chmod 777 /etc/apache2/ssl
 USER smtp
 
