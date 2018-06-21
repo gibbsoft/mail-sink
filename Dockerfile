@@ -57,7 +57,7 @@ RUN chmod 777 /etc/courier/authdaemonrc
 RUN chmod 777 /usr/sbin/smtp-sink
 RUN chown -R smtp:smtp /usr/lib/courier
 RUN chown -R smtp:smtp /usr/lib/cgi-bin
-RUN mkdir /etc/apache2/ssl
+#RUN mkdir /etc/apache2/ssl
 RUN chmod 777 /etc/apache2/ssl
 USER smtp
 
