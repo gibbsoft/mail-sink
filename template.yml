@@ -91,9 +91,6 @@ objects:
             protocol: TCP
           - containerPort: 8080
             protocol: TCP
-          env:
-          - name: FQDN
-            value: ${FQDN}
           resources:
             limits:
               memory: ${MEMORY_LIMIT}
@@ -195,6 +192,3 @@ parameters:
 - name: MEMORY_LIMIT
   description: Heap for JVM
   value: "1Gi"
-- name: FQDN
-  description: full qualified domain name
-  value: "mail-sink-web-sec-mail.apps.ocp.datr.eu"
