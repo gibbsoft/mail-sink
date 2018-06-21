@@ -1,1 +1,4 @@
 .idea/
+oc
+openshift-origin-client-tools-*
+.vagrant

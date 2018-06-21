@@ -1,8 +1,9 @@
 #!/bin/bash
 
-IP=ocp.datr.eu
-USER=justin
-PROJECT=mail
+IP=127.0.0.1
+USER=developer
+PROJECT=mail-sink
+GIT_REPO=https://github.com/gibbsoft/mail-sink.git
 
 oc login https://${IP}:8443 -u $USER
 
@@ -12,8 +13,7 @@ oc delete all -l app=mail-sink
 
 oc new-app -f template.yml \
     -p APPLICATION_NAME=mail-sink \
-    -p SOURCE_REPOSITORY_URL=https://github.com/justindav1s/mail-sink.git \
+    -p SOURCE_REPOSITORY_URL=${GIT_REPO} \
     -p SOURCE_REPOSITORY_REF=master \
     -p DOCKERFILE_PATH="." \
-    -p MEMORY_LIMIT=1Gi \
-    -p FQDN=mail-sink-web-sec-mail.apps.ocp.datr.eu
+    -p MEMORY_LIMIT=1Gi

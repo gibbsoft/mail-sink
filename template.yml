@@ -83,9 +83,6 @@ objects:
             protocol: TCP
           - containerPort: 8080
             protocol: TCP
-          env:
-          - name: FQDN
-            value: ${FQDN}
           resources:
             limits:
               memory: ${MEMORY_LIMIT}
@@ -115,6 +112,23 @@ objects:
   metadata:
     labels:
       app: ${APPLICATION_NAME}
+    name: mail-sink-smtp
+  spec:
+    ports:
+    - name: smtp
+      port: 8025
+      protocol: TCP
+      targetPort: 8025
+    selector:
+      name: ${APPLICATION_NAME}
+    sessionAffinity: None
+    type: ClusterIP
+
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: ${APPLICATION_NAME}
     name: mail-sink-web-sec
   spec:
     ports:
@@ -122,6 +136,24 @@ objects:
       port: 4443
       protocol: TCP
       targetPort: 4443
+    selector:
+      name: ${APPLICATION_NAME}
+    sessionAffinity: None
+    type: ClusterIP
+
+
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: ${APPLICATION_NAME}
+    name: mail-sink-web-imap
+  spec:
+    ports:
+    - name: imap
+      port: 8143
+      protocol: TCP
+      targetPort: 8143
     selector:
       name: ${APPLICATION_NAME}
     sessionAffinity: None
@@ -153,11 +185,10 @@ objects:
     name: ${APPLICATION_NAME}
   spec:
     tls:
-      insecureEdgeTerminationPolicy: Redirect
-      termination: edge
+      termination: passthrough
     to:
       kind: Service
-      name: mail-sink-web
+      name: mail-sink-web-sec
       weight: 100
     wildcardPolicy: None
 
@@ -165,7 +196,7 @@ parameters:
 - description: The name for the application.
   name: APPLICATION_NAME
   required: true
-  value: mail-sink
+  value: "mail-sink"
 - description: Git source URI for application
   name: SOURCE_REPOSITORY_URL
   value: "https://github.com/justindav1s/mail-sink.git"
@@ -187,6 +218,18 @@ parameters:
 - name: MEMORY_LIMIT
   description: Heap for JVM
   value: "1Gi"
-- name: FQDN
-  description: full qualified domain name
-  value: "mail-sink-web-sec-mail.apps.ocp.datr.eu"
+- name: USER_NAME
+  displayName: User name
+  description: Username for mail sink.
+  value: "PcdO6g4gV662A"
+  required: false
+- name: USER_ID
+  displayName: User ID
+  description: User ID for mail sink.
+  value: "10001"
+  required: false
+- name: USER_PASSWORD
+  displayName: User Password
+  description: Password for the smtp user.
+  value: "PcdO6g4gV662A"
+  required: false
