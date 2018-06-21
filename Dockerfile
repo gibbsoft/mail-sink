@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends net-tools vim postfix courier-base sqwebmail courier-imap sudo && \
 	rm -fr /var/lib/apt/lists/*
 
-RUN useradd -ms /bin/bash -p PcdO6g4gV662A -u 1000120000 smtp
+RUN useradd -ms /bin/bash -p PcdO6g4gV662A -u 1001 smtp
 RUN adduser smtp sudo
 RUN  echo  "%sudo    ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers
 
@@ -55,8 +55,9 @@ RUN chmod -R 777 /var/lock/apache2
 RUN chmod 777 /usr/sbin/authdaemond
 RUN chmod 777 /etc/courier/authdaemonrc
 RUN chmod 777 /usr/sbin/smtp-sink
-RUN chown -R smtp:smtp /usr/lib/courier
-RUN chown -R smtp:smtp /usr/lib/cgi-bin
+RUN chmod -R 777 /usr/lib
+RUN chmod -R 777 /usr/lib/courier
+RUN chmod -R 777 /usr/lib/cgi-bin
 #RUN mkdir /etc/apache2/ssl
 RUN chmod 777 /etc/apache2/ssl
 USER smtp
