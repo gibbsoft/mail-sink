@@ -60,6 +60,8 @@ RUN chmod -R 777 /usr/lib/courier
 RUN chmod -R 777 /usr/lib/cgi-bin
 RUN chmod -R 777 /var/cache
 RUN chmod -R 777 /usr/share
+RUN chmod -R 777 /var/spool/postfix
+RUN mkdir /home/smtp/Maildir && chmod -R 777 /home/smtp/Maildir
 RUN chmod 777 /etc/apache2/ssl
 USER smtp
 
