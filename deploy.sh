@@ -17,3 +17,5 @@ oc new-app -f template.yml \
     -p SOURCE_REPOSITORY_REF=master \
     -p DOCKERFILE_PATH="." \
     -p MEMORY_LIMIT=1Gi
+
+

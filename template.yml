@@ -5,6 +5,14 @@ metadata:
 objects:
 
 - apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    annotations:
+    labels:
+      app: ${APPLICATION_NAME}
+    name: ${APPLICATION_NAME}
+
+- apiVersion: v1
   kind: ImageStream
   metadata:
     labels:
@@ -154,23 +162,6 @@ objects:
       port: 8143
       protocol: TCP
       targetPort: 8143
-    selector:
-      name: ${APPLICATION_NAME}
-    sessionAffinity: None
-    type: ClusterIP
-
-- apiVersion: v1
-  kind: Service
-  metadata:
-    labels:
-      app: ${APPLICATION_NAME}
-    name: mail-sink-web
-  spec:
-    ports:
-    - name: http
-      port: 8080
-      protocol: TCP
-      targetPort: 8080
     selector:
       name: ${APPLICATION_NAME}
     sessionAffinity: None
