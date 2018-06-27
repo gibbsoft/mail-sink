@@ -150,6 +150,18 @@ service "mail-sink-web-sec" deleted
 $
 ```
 
+### Watching the build
+
+```bash
+$ oc logs -f bc/mail-sink-docker-build
+```
+
+### Connecting to the mail pod
+
+```bash
+$ oc rsh (oc get pods | grep mail-sink-1 | awk '{ print $1 }') bash
+```
+
 Rinse and repeat as required.
 
 ### Cleaning Up
