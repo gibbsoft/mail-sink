@@ -11,6 +11,7 @@ ENV APACHE_RUN_GROUP smtp
 RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
 
 RUN apt-get update && \
+    apt-get install apt-utils && \
     apt-get install -y --no-install-recommends postfix courier-base sqwebmail courier-imap && \
     apt-get autoremove -y && \
     rm -fr /var/lib/apt/lists/*
