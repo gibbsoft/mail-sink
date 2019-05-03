@@ -1,4 +1,4 @@
-FROM httpd:2.2
+FROM httpd:2.4
 
 ENV DEBIAN_FRONTEND noninterative
 ENV FQDN localhost
