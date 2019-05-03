@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
     vb.memory = "8192"
   end
   config.vm.provision "shell", inline: <<-SHELL
+    echo 'export PATH=$PATH:/usr/local/bin' >/etc/profile.d/usr_bin.sh
     export PATH=$PATH:/usr/local/bin
     cp /vagrant/oc /usr/local/bin/
     yum install -y docker
