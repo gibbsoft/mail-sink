@@ -16,8 +16,8 @@ Download and extract the latest openshift tools from [openshift.org](https://www
 into the working directory.
 
 ```bash
-$ wget https://github.com/openshift/origin/releases/download/v3.9.0/openshift-origin-client-tools-v3.9.0-191fece-linux-64bit.tar.gz
-$ tar -xf openshift-origin-client-tools-v3.9.0-191fece-linux-64bit.tar.gz \
+$ wget https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
+$ tar -xf openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz \
   --wildcards --no-anchored --strip-components 1 '*/oc'
 ```
 
