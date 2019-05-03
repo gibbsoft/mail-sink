@@ -16,6 +16,7 @@ Vagrant.configure("2") do |config|
     echo 'export PATH=$PATH:/usr/local/bin' >/etc/profile.d/usr_bin.sh
     export PATH=$PATH:/usr/local/bin
     cp /vagrant/oc /usr/local/bin/
+    chmod 755 /usr/local/bin/oc
     yum install -y docker
     echo '{ "insecure-registries": [ "172.30.0.0/16" ] }' >/etc/docker/daemon.json
     systemctl enable docker
