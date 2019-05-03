@@ -1,6 +1,6 @@
-FROM httpd:2.2
+FROM httpd:2.4
 
-ENV DEBIAN_FRONTEND noninterative
+ENV DEBIAN_FRONTEND noninteractive
 ENV FQDN localhost
 ENV USER_NAME smtp
 ENV USER_ID 10001
@@ -10,7 +10,24 @@ ENV APACHE_RUN_GROUP smtp
 
 RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
 
+# filthy hack, see https://bugs.launchpad.net/ubuntu/+source/courier/+bug/1781243
+RUN mkdir -p /usr/share/man/man1 \
+    /usr/share/man/man5 \
+    /usr/share/man/man7 \
+    /usr/share/man/man8 && \
+    touch /usr/share/man/man1/lockmail.1.gz \
+    /usr/share/man/man1/maildirmake.courier.1.gz \
+    /usr/share/man/man1/maildirmake.maildrop.1.gz \
+    /usr/share/man/man1/makedat.courier.1.gz \
+    /usr/share/man/man5/maildir.courier.5.gz \
+    /usr/share/man/man5/maildir.maildrop.5.gz \
+    /usr/share/man/man7/maildirquota.courier.7.gz \
+    /usr/share/man/man7/maildirquota.maildrop.7.gz \
+    /usr/share/man/man8/deliverquota.courier.8.gz \
+    /usr/share/man/man8/deliverquota.maildrop.8.gz
+
 RUN apt-get update && \
+    apt-get install -y --no-install-recommends maildrop && \
     apt-get install -y --no-install-recommends postfix courier-base sqwebmail courier-imap && \
     apt-get autoremove -y && \
     rm -fr /var/lib/apt/lists/*
