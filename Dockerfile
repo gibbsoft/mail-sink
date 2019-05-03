@@ -1,6 +1,6 @@
 FROM httpd:2.4
 
-ENV DEBIAN_FRONTEND noninterative
+ENV DEBIAN_FRONTEND noninteractive
 ENV FQDN localhost
 ENV USER_NAME smtp
 ENV USER_ID 10001
